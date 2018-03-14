@@ -6,7 +6,8 @@ Cuts out the waiting period from our data and adds the reaction time (RT)
 import neo
 import quantities as pq
 import numpy as np
-
+import useful_tools as ut
+     
 path        = '../data/'
 resultpath  = '../data_resliced/'
 
@@ -37,4 +38,6 @@ for idx, trial in enumerate(block.segments):  # for each trial
     block_sliced.segments[-1].annotations           = trial.annotations
     block_sliced.segments[-1].annotations['RT']     = trial.events[0].annotations['signal'][trial.events[0].annotations['trial_event_labels'].index(b'GO-ON')] - trial.events[0].annotations['signal'][trial.events[0].annotations['trial_event_labels'].index(b'CUE-OFF')]
     
+ut.add_channel_and_units_v2(block_sliced)
+
 np.save(resultpath + 'data_resliced{}.npy'.format(data_idx), block_sliced)
