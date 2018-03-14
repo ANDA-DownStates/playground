@@ -3,6 +3,12 @@ import neo
 import quantities as pq
 import numpy as np
 
+# Relative path to data (chenge to where you saved them)
+path = './data/'
+
+# Select the data
+data_idx = 0
+
 block = np.load(path + 'data{}.npy'.format(data_idx), encoding='latin1').item()
 
 block_sliced = neo.Block()
