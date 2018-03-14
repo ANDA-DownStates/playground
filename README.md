@@ -27,8 +27,10 @@ git pull pg HEAD
 Let's create a dummy file and push it to the remote repo. 
 
 First, create a dummy txt file in the folder /playground, then add it to our git stage (= stuff that will be part of our next commit) and commit it to our local repo.
+```
 git add dummy.txt
 git commit -m 'My dummy commit'
 git push -u origin master
+```
 
 The last part of the last line (-u origin master) is just needed the first time to tell git to which remote branch to push.
