@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
+"""
+Cuts out the waiting period from our data and adds the reaction time (RT)
+"""
+
 import neo
 import quantities as pq
 import numpy as np
 
-# Relative path to data (chenge to where you saved them)
-path = './data/'
+path        = '../data/'
+resultpath  = '../data_resliced/'
 
-# Select the data
-data_idx = 0
+data_idx = 0    # select dataset
+
 
 block = np.load(path + 'data{}.npy'.format(data_idx), encoding='latin1').item()
 
@@ -30,6 +34,7 @@ for idx, trial in enumerate(block.segments):  # for each trial
 
     # ... and stuff the result into our new block
     block_sliced.segments.append(seg_sliced)
-    block_sliced.segments[-1].annotations = trial.annotations    
-
-np.save('sliced_data', block_sliced)
+    block_sliced.segments[-1].annotations           = trial.annotations
+    block_sliced.segments[-1].annotations['RT']     = trial.events[0].annotations['signal'][trial.events[0].annotations['trial_event_labels'].index(b'GO-ON')] - trial.events[0].annotations['signal'][trial.events[0].annotations['trial_event_labels'].index(b'CUE-OFF')]
+    
+np.save(resultpath + 'data_resliced{}.npy'.format(data_idx), block_sliced)
