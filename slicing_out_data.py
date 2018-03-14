@@ -30,5 +30,6 @@ for idx, trial in enumerate(block.segments):  # for each trial
 
     # ... and stuff the result into our new block
     block_sliced.segments.append(seg_sliced)
+    block_sliced.segments[-1].annotations = trial.annotations    
 
 np.save('sliced_data', block_sliced)
