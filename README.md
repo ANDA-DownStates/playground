@@ -37,7 +37,7 @@ The last part of the last line (-u origin master) is just needed the first time 
 https://www.quora.com/What-does-git-remote-and-origin-mean
 
 You might be asked to give yourself a name and email address. In that case, write:
+```
 git config --global user.email 'my@gmail.org'
 git config --global user.name 'myname'
-
-
+```
