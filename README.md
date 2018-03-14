@@ -30,7 +30,7 @@ First, create a dummy txt file in the folder /playground, then add it to our git
 ```
 git add dummy.txt
 git commit -m 'My dummy commit'
-git push -u origin master
+git push -u pg master
 ```
 
 The last part of the last line (-u origin master) is just needed the first time to tell git to which remote branch to push. Here is an explanation what origin means:
